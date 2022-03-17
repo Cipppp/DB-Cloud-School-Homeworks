@@ -16,16 +16,16 @@ public class Main {
         vehicles.add(second_vehicle);
         vehicles.add(third_vehicle);
 
-        BusStation bus = new BusStation(vehicles);
+        BusStation busStation = new BusStation(vehicles);
 
         System.out.println("Vehicles before sorting: ");
-        bus.showAllVehicles();
-        bus.showTotalProfit();
+        busStation.showAllVehicles();
+        busStation.showTotalProfit();
 
         System.out.println();
         System.out.println("Vehicles after sorting: ");
-        bus.sortVehicles();
-        bus.showAllVehicles();
+        busStation.sortVehicles();
+        busStation.showAllVehicles();
 
     }
 }
