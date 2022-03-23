@@ -12,7 +12,11 @@ public class MyList<T> {
     }
 
     public void add(T element) {
-        list_of_elements.add(element);
+        if (list_of_elements.size() > dimension) {
+            System.out.println("Array is full!");
+        } else {
+            list_of_elements.add(element);
+        }
     }
 
     public void print() {
