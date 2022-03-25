@@ -1,4 +1,5 @@
 package com.company.Enums;
 
-public class Topping {
+public enum Topping {
+    NO_TOPPING, TOMATOES, CAULIFLAWER
 }
