@@ -21,7 +21,7 @@ public class OrderController {
 
     @GetMapping("/orders/{id}")
     public Order getOrderById(@PathVariable Integer id) {
-        return orderService.getOrderById(id);
+        return orderService.getById(id);
     }
 
     @PostMapping("/orders")
@@ -34,5 +34,10 @@ public class OrderController {
     public Order updateOrder(@RequestBody Order order) {
         orderService.update(order);
         return order;
+    }
+
+    @DeleteMapping("/orders/{id}")
+    public void deleteOrder(@PathVariable Integer id){
+        orderService.delete(getOrderById(id));
     }
 }

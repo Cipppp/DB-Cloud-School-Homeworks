@@ -1,5 +1,8 @@
 package com.example.shopifyexposed.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +17,10 @@ public class OrderDetails {
     public OrderDetails(Integer id, Integer quantity) {
         this.id = id;
         this.quantity = quantity;
+    }
+
+    public OrderDetails() {
+
     }
 
     public Integer getId() {

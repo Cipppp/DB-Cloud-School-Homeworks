@@ -15,7 +15,9 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-    public Order getOrderById(Integer id) { return orderRepository.getOrderById(id); }
+    public Order getById(Integer id) {
+        return orderRepository.findById(id).get();
+    }
 
     public List<Order> getAllOrders() {
         List<Order> orders = new ArrayList<>();
@@ -33,5 +35,9 @@ public class OrderService {
 
     public void delete(Order order) {
         orderRepository.delete(order);
+    }
+
+    public List<Order> getOrderByCustomerId(Integer id) {
+        return orderRepository.getOrderById(id);
     }
 }
