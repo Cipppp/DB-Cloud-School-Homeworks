@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DB Cloud School (Homeworks).iml" filepath="$PROJECT_DIR$/DB Cloud School (Homeworks).iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sprinttestapp.iml" filepath="$PROJECT_DIR$/../sprinttestapp.iml" />
     </modules>
   </component>
 </project>
