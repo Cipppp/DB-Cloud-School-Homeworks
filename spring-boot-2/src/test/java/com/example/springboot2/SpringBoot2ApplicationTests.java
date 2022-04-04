@@ -1,10 +1,10 @@
-package com.example.shopifyexposed;
+package com.example.springboot2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ShopifyExposedApplicationTests {
+class SpringBoot2ApplicationTests {
 
 	@Test
 	void contextLoads() {
