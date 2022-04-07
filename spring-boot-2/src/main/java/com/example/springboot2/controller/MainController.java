@@ -1,6 +1,8 @@
 package com.example.springboot2.controller;
 
+import com.example.springboot2.dao.CustomerDAO;
 import com.example.springboot2.models.Customer;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -8,72 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 public class MainController {
 
+    CustomerDAO customerDAO;
+
+    @GetMapping("/filterCity")
+    public List<Customer> filterCity(@RequestParam ("city") String city){
+        return customerDAO.filterCity(city);
+    }
+    @GetMapping("/filterCountry")
+    public List<Customer> filterCountry(@RequestParam ("country") String country){
+        return customerDAO.filterCountry(country);
+    }
+
     @GetMapping("/view")
-    public ModelAndView allCustomersView(){
+    public ModelAndView displayView(){
         List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer(1,"BestJohn","Bucharest","Romania"));
-        customers.add(new Customer(2,"BestTrainerRusuDinu","Bucharest","Romania"));
-        customers.add(new Customer(3,"BestTrainerAlexHang","Bucharest","Romania"));
-        ModelAndView modelAndView = new ModelAndView("view-page");
+
+        customers.add(new Customer(1, "abc", "Bucharest", "Romania"));
+        customers.add(new Customer(1, "bcd", "Ploiesti", "Romania"));
+        customers.add(new Customer(1, "cde", "Constanta", "Romania"));
+
+        ModelAndView modelAndView = new ModelAndView("view-pages");
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
-    @GetMapping("/{id}")
-    public ModelAndView CustomersById(Integer id){
-        List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer(1,"BestJohn","Bucharest","Romania"));
-        customers.add(new Customer(2,"BestTrainerRusuDinu","Bucharest","Romania"));
-        customers.add(new Customer(3,"BestTrainerAlexHang","Bucharest","Romania"));
-        for(Customer customer: customers){
-            if(customer.getId() != id)
-                customers.remove(customer);
-        }w
-        ModelAndView modelAndView = new ModelAndView("view-page");
-        modelAndView.addObject("customers", customers);
-        return modelAndView;
-    }
-    @GetMapping("/{username}")
-    public ModelAndView CustomersByUsername(String username){
-        List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer(1,"BestJohn","Bucharest","Romania"));
-        customers.add(new Customer(2,"BestTrainerRusuDinu","Bucharest","Romania"));
-        customers.add(new Customer(3,"BestTrainerAlexHang","Bucharest","Romania"));
-        for(Customer customer: customers){
-            if(customer.getUsername() != username)
-                customers.remove(customer);
-        }
-        ModelAndView modelAndView = new ModelAndView("view-page");
-        modelAndView.addObject("customers", customers);
-        return modelAndView;
-    }
-    @GetMapping("/{country}")
-    public ModelAndView CustomersByCountry(String country){
-        List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer(1,"BestJohn","Bucharest","Romania"));
-        customers.add(new Customer(2,"BestTrainerRusuDinu","Bucharest","Romania"));
-        customers.add(new Customer(3,"BestTrainerAlexHang","Bucharest","Romania"));
-        for(Customer customer: customers){
-            if(customer.getCountry() != country)
-                customers.remove(customer);
-        }
-        ModelAndView modelAndView = new ModelAndView("view-page");
-        modelAndView.addObject("customers", customers);
-        return modelAndView;
-    }
-    @GetMapping("/{city}")
-    public ModelAndView CustomersByCity(String city){
-        List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer(1,"BestJohn","Bucharest","Romania"));
-        customers.add(new Customer(2,"BestTrainerRusuDinu","Bucharest","Romania"));
-        customers.add(new Customer(3,"BestTrainerAlexHang","Bucharest","Romania"));
-        for(Customer customer: customers){
-            if(customer.getCity() != city)
-                customers.remove(customer);
-        }
-        ModelAndView modelAndView = new ModelAndView("view-page");
-        modelAndView.addObject("customers", customers);
-        return modelAndView;
+
+    @PostMapping("/customers")
+    public void addCustomer(@RequestBody CustomerDAO customer)
+    {
+        customerDAO.create(customer);
     }
 }

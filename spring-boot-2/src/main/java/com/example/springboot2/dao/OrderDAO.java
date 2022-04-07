@@ -2,10 +2,12 @@ package com.example.springboot2.dao;
 
 import com.example.springboot2.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@Service
 public class OrderDAO implements DAO<OrderDAO> {
     private final OrderRepository orderRepository;
 

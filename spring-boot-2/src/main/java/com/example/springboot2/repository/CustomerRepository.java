@@ -4,8 +4,10 @@ import com.example.springboot2.dao.CustomerDAO;
 import com.example.springboot2.models.Customer;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface CustomerRepository extends CrudRepository <CustomerDAO, Integer>{
-    Iterable<Customer> getAllByUsername(String username);
-    Iterable<Customer> getAllByCity(String city);
-    Iterable<Customer> getAllByCountry(String country);
+    public List<Customer> findByUsername(String name);
+    public List<Customer> findByCity(String city);
+    public List<Customer> findByCountry(String country);
 }
