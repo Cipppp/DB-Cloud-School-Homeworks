@@ -17,6 +17,11 @@ public class ClientOrderService {
         return clientOrderRepository.getById(id);
     }
 
+    public List<ClientOrder> getAllClientsOrders()
+    {
+        return clientOrderRepository.findAll();
+    }
+
     public void addClientOrder(ClientOrder clientOrder)
     {
         clientOrderRepository.save(clientOrder);
@@ -27,8 +32,4 @@ public class ClientOrderService {
         clientOrderRepository.delete(clientOrder);
     }
 
-    public List<ClientOrder> getAllClientsOrders()
-    {
-        return clientOrderRepository.findAll();
-    }
 }

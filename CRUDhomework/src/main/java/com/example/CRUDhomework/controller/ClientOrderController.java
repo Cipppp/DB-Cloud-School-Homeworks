@@ -29,32 +29,31 @@ public class ClientOrderController {
         return clientOrderService.getClientOrderById(id);
     }
 
-    @PostMapping("/orders")
-    public void CreateOrder(@RequestBody ClientOrder clientOrder)
+    @PostMapping("/orders/add")
+    public void createNewOrder(@RequestBody ClientOrder clientOrder)
     {
         clientOrderService.addClientOrder(clientOrder);
     }
 
-    @DeleteMapping("/orders/{id}")
+    @DeleteMapping("/orders/delete/{id}")
     public void deleteOrder(@PathVariable Integer id){
         clientOrderService.deleteClientOrder( clientOrderService.getClientOrderById(id) );
     }
 
-
-    @PostMapping("/orders/{id}")
-    public void addNewProductInOrder(@PathVariable Integer id, @RequestBody Product p){
+    @PostMapping("/orders/add/{id}")
+    public void addNewProduct(@PathVariable Integer id, @RequestBody Product p){
         ClientOrder clientOrder = getOrderById(id);
-        clientOrder.addProductInOrder(p);
+        clientOrder.addProduct(p);
         clientOrderRepository.save(clientOrder);
     }
 
     @PostMapping("/orders/{id}/{idProduct}")
-    public void removeProductFromOrder(@PathVariable Integer id, @PathVariable Integer idProduct){
+    public void removeProduct(@PathVariable Integer id, @PathVariable Integer idProduct){
         ClientOrder clientOrder = getOrderById(id);
 
         Product product = productService.getProductById(idProduct);
 
-        clientOrder.removeProductInOrder(product);
+        clientOrder.removeProduct(product);
         clientOrderRepository.save(clientOrder);
     }
 

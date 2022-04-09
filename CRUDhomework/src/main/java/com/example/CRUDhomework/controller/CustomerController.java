@@ -1,7 +1,7 @@
 package com.example.CRUDhomework.controller;
 
 
-import com.example.CRUDhomework.exceptions.UserAlreadyExistException;
+import com.example.CRUDhomework.exceptions.UserExistsException;
 import com.example.CRUDhomework.model.Customer;
 import com.example.CRUDhomework.service.CustomerService;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class CustomerController {
         return customerService.getCustomerById(id);
     }
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/customers/delete/{id}")
     public void deleteCustomer(@PathVariable int id)
     {
         customerService.deleteCustomer(id);
@@ -38,7 +38,7 @@ public class CustomerController {
     public String registerCustomer(@RequestBody Customer customer){
         try{
             customerService.register(customer);
-        } catch (UserAlreadyExistException e) {
+        } catch (UserExistsException e) {
             e.printStackTrace();
             return "Username already registered";
         }
@@ -49,15 +49,15 @@ public class CustomerController {
     public String loginCustomer(@RequestBody Customer customer, HttpServletResponse response){
         if (customerService.checkCredientials(customer.getUsername(), customer.getPassword()))
         {
-            Cookie cookie = new Cookie("userId", customer.getUsername());
+            Cookie cookie = new Cookie("user_id", customer.getUsername());
             response.addCookie(cookie);
             return "Login succesful";
         }
         return "Wrong credientials";
     }
 
-    @GetMapping("/customers/info_customer")
-    public String printCookie(@CookieValue(name = "userId", defaultValue = "notLoggedIn")String usernameLoggedIn){
+    @GetMapping("/customers/info")
+    public String printCookie(@CookieValue(name = "user_id", defaultValue = "notLoggedIn")String usernameLoggedIn){
         if(usernameLoggedIn.equals("notLoggedIn"))
             return "Not logged in";
         return usernameLoggedIn;

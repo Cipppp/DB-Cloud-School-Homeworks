@@ -1,12 +1,10 @@
 package com.example.CRUDhomework.service;
 
-import com.example.CRUDhomework.exceptions.UserAlreadyExistException;
+import com.example.CRUDhomework.exceptions.UserExistsException;
 import com.example.CRUDhomework.model.Customer;
 import com.example.CRUDhomework.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -20,31 +18,31 @@ public class CustomerService {
         return customerRepository.getById(id);
     }
 
-    public void deleteCustomer(Integer idClient) {
-        customerRepository.delete(getCustomerById(idClient));
-    }
-
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    public boolean checkIfUserExist(String username) {
+    public void deleteCustomer(Integer idClient) {
+        customerRepository.delete(getCustomerById(idClient));
+    }
+
+    public boolean userExists(String username) {
         return customerRepository.findCustomerByUsername(username) != null;
     }
 
-    public void register(Customer customer) throws UserAlreadyExistException {
+    public void register(Customer customer) throws UserExistsException {
 
-        if (checkIfUserExist(customer.getUsername()))
-            throw new UserAlreadyExistException();
+        if (userExists(customer.getUsername()))
+            throw new UserExistsException();
 
         customerRepository.save(customer);
 
     }
 
     public boolean checkCredientials(String username, String password) {
-        Customer c = customerRepository.findCustomerByUsername(username);
-        if (c != null)
-            return c.getUsername().equals(username) && c.getPassword().equals(password);
+        Customer customer = customerRepository.findCustomerByUsername(username);
+        if (customer != null)
+            return customer.getUsername().equals(username) && customer.getPassword().equals(password);
         return false;
     }
 

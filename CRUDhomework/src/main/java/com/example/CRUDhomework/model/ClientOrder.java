@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "clientOrders")
+@Table(name = "clients_orders")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClientOrder {
@@ -50,11 +50,11 @@ public class ClientOrder {
     @OneToMany
     private List<Product> products;
 
-    public void addProductInOrder(Product p){
+    public void addProduct(Product p){
         products.add(p);
     }
 
-    public void removeProductInOrder(Product p){
+    public void removeProduct(Product p){
         products.remove(p);
     }
 
