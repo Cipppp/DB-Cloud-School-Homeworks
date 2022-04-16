@@ -1,10 +1,10 @@
-package com.example.CRUDhomework;
+package com.example.swaggerhw;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CruDhomeworkApplicationTests {
+class SwaggerhwApplicationTests {
 
 	@Test
 	void contextLoads() {

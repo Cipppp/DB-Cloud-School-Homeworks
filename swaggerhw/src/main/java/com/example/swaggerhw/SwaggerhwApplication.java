@@ -1,13 +1,13 @@
-package com.example.CRUDhomework;
+package com.example.swaggerhw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CruDhomeworkApplication {
+public class SwaggerhwApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CruDhomeworkApplication.class, args);
+		SpringApplication.run(SwaggerhwApplication.class, args);
 	}
 
 }
