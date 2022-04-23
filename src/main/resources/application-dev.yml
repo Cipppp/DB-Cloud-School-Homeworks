@@ -1,5 +1,0 @@
-spring:
-  message: Payment Simultaion PROD
-
-server:
-  port: 8081

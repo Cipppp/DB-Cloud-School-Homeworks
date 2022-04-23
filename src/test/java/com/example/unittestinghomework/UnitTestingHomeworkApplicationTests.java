@@ -1,10 +1,10 @@
-package com.example.swaggerhw;
+package com.example.unittestinghomework;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SwaggerhwApplicationTests {
+class UnitTestingHomeworkApplicationTests {
 
 	@Test
 	void contextLoads() {

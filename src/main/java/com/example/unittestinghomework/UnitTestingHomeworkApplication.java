@@ -1,13 +1,13 @@
-package com.example.swaggerhw;
+package com.example.unittestinghomework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SwaggerhwApplication {
+public class UnitTestingHomeworkApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwaggerhwApplication.class, args);
+		SpringApplication.run(UnitTestingHomeworkApplication.class, args);
 	}
 
 }

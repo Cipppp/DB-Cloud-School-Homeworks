@@ -1,9 +1,9 @@
-package com.example.swaggerhw.model;
+package com.example.unittestinghomework.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.criterion.Order;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,14 +15,15 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class OrderHistory {
+
     @Id
     @GeneratedValue
-    private Long id;
-    @NotNull
-    private String name;
+    private Integer id;
 
     @OneToMany
-    List<Order> orderList;
+    private List<Product> orderList;
 
+    @OneToMany
+    private List<User> userList;
 }
