@@ -14,6 +14,9 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
+    private String username;
+
+
     private Integer numberOfOrders;
 
     @ManyToOne
@@ -31,6 +34,14 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getNumberOfOrders() {
