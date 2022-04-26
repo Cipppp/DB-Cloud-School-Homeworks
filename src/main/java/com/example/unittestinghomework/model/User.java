@@ -3,68 +3,43 @@ package com.example.unittestinghomework.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
+
+import static javax.persistence.FetchType.EAGER;
 
 @Data
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String username;
+    private String password;
+
+    @ManyToMany(fetch = EAGER)
+    private Collection<Role> roles = new ArrayList<>();
 
 
-    private Integer numberOfOrders;
+//    private Integer numberOfOrders;
 
-    @ManyToOne
-    private Cart cart;
+//    @ManyToOne
+//    private Cart cart;
+//
+//    @OneToOne
+//    private Wishlist wishlist;
+//
+//    @ManyToOne
+//    private OrderHistory orderHistory;
 
-    @OneToOne
-    private Wishlist wishlist;
+//    public Integer getNumberOfOrders() {
+//        return numberOfOrders;
+//    }
 
-    @ManyToOne
-    private OrderHistory orderHistory;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Integer getNumberOfOrders() {
-        return numberOfOrders;
-    }
-
-    public void setNumberOfOrders(Integer numberOfOrders) {
-        this.numberOfOrders = numberOfOrders;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
-    public Wishlist getWishlist() {
-        return wishlist;
-    }
-
-    public void setWishlist(Wishlist wishlist) {
-        this.wishlist = wishlist;
-    }
 }

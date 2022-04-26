@@ -1,43 +1,34 @@
 package com.example.unittestinghomework.service;
 
 import com.example.unittestinghomework.model.Cart;
+import com.example.unittestinghomework.model.Role;
 import com.example.unittestinghomework.model.User;
+import com.example.unittestinghomework.repository.RoleRepository;
 import com.example.unittestinghomework.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Service
-@AllArgsConstructor
-public class UserService {
+public interface UserService  {
 
-    private final UserRepository userRepository;
+    User saveUser(User user);
+    Role saveRole(Role role);
 
-    public User getUserById(Integer id) { return userRepository.getById(id); }
+    void addRoleToUser(String username, String roleName);
 
-    public List<User> getAllUsers() { return userRepository.findAll(); }
+    User getUser(String username);
 
-    public void insertUser(User user) { userRepository.save(user); }
-
-    public void removeUser(User user) { userRepository.delete(user); }
-
-    public void deleteUserById(Integer id) { userRepository.delete(getUserById(id)); }
-
-    public void updateUser(User user) { userRepository.save(user); }
-
-    public List<User> compareByNumberOfOrders(List<User> users)
-    {
-        Stream<User> stream =  users.stream();
-        return stream.sorted(new Comparator<User>() {
-            @Override
-            public int compare(User o1, User o2) {
-                return o1.getNumberOfOrders() - o2.getNumberOfOrders();
-            }
-        }).collect(Collectors.toList());
-    }
+//    List<User> getUsers();
 
 }
+

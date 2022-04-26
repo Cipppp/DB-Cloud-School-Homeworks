@@ -22,21 +22,6 @@ public class Wishlist {
     @OneToOne
     User user;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public List<Product> getProductsList() {
-        return productsList;
-    }
-
-    public void setProductsList(List<Product> productsList) {
-        this.productsList = productsList;
-    }
 }
 
 

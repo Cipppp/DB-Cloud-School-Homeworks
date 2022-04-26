@@ -1,14 +1,28 @@
 package com.example.unittestinghomework.repository;
 
+import com.example.unittestinghomework.model.Role;
 import com.example.unittestinghomework.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User findUserByUsername(String username);
-
-    User findUserByEmail(String email);
-
-    User findUserByUserID(String userID);
+    User findByUsername(String username);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
