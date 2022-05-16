@@ -1,33 +1,63 @@
-function getResponse() {
-    const ul = document.getElementById('authors');
-    const list = document.createDocumentFragment();
-    const url = 'https://jsonplaceholder.typicode.com/users';
+let usersList;
+const articleButton = document.getElementById('article_button');
+let postsList;
 
-    fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            let authors = data;
 
-            authors.map(function (author) {
-                let li = document.createElement('li');
-                let name = document.createElement('h2');
-                let email = document.createElement('span');
+fetch('https://jsonplaceholder.typicode.com/users')
+    .then((response) => response.json())
+    .then((data) => (usersList = data));
 
-                name.innerHTML = `${author.name}`;
-                email.innerHTML = `${author.email}`;
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((data) => (postsList = data));
 
-                li.appendChild(name);
-                li.appendChild(email);
-                list.appendChild(li);
-            });
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+articleButton.addEventListener('click', () => {
+        const mussumIpsum = mIpsum({ pNum: 4 });
 
-    ul.appendChild(list);
-}
+        let mainElement = document.querySelector('main');
+        let articleElement = document.createElement('article');
 
-getResponse();
+        mainElement.appendChild(articleElement);
+
+        let userId = Math.floor(Math.random() * 10 + 1) - 1;
+        let postTitleFromUserId;
+
+        for (let p in postsList) {
+            if (postsList[p].userId == userId) {
+                let postId = Math.floor(
+                    Math.random() * (10 * userId - 10 * (userId - 1) + 1) +
+                        10 * (userId - 1)
+                );
+                postTitleFromUserId = postsList[postId].title;
+                break;
+            }
+        }
+
+
+  let output = `
+            <article>
+                <h2 class="title">${postTitleFromUserId}</h2>
+                <ul class="info__container">
+                    <li class="info__item">Destination Europe</li>
+                    <li class="info__item">Added by
+                        <span class="info__mark">${usersList[userId].name}</span>
+                    </li>
+                    <li class="info__item">July 01, 2018</li>
+                </ul>
+                <div class="actions__container">
+                    <button type="button" class="actions__btn">Edit</button>
+                    <button type="button" class="actions__btn">Delete</button>
+                </div>
+
+                <img src="https://picsum.photos/1280/720?dummy=${Math.floor(Math.random() * 100)}" class="hero-image" alt="Random image"/>
+                <div class="content__container">
+                    ${mussumIpsum}
+                </div>
+            </article>
+  `
+       
+            articleElement.insertAdjacentHTML('beforeend', output);
+
+        
+});
+

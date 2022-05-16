@@ -1,75 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css"
-        />
-        <link
-            href="https://fonts.googleapis.com/css?family=Cardo|Montserrat"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./styles/style.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-        />
 
-        <title>My Travelling blog</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Cardo|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>My Travelling blog</title>
+</head>
 
-    <body>
-        <div class="container">
-            <nav class="nav">
-                <ul class="nav__container">
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Travel updates</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Reviews</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-
-            
-            <main id="posts">
-            </main>
-
-
-
-            <footer class="footer">
-                <a href="#" class="footer__link">previous</a>
-                <a href="#" class="footer__link">next</a>
-            </footer>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <ul class="nav__container">
+                <li class="nav__item">
+                    <a href="" class="nav__link">Travel updates</a>
+                </li>
+                <li class="nav__item">
+                    <a href="" class="nav__link">Reviews</a>
+                </li>
+                <li class="nav__item">
+                    <a href="" class="nav__link">About</a>
+                </li>
+                <li class="nav__item">
+                    <a href="" class="nav__link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="add__container">
+            <button type="button" class="button"> + Add Article</button>
         </div>
-    </body>
-    <script
-        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"
-    ></script>
-    <script src="./scripts/lorem.js"></script>
-    <script src="./scripts/script.js"></script>
+
+        <button type="button" id="article_button" class="button">Generate article</button>
+
+        <main id="posts">
+            
+        </main>
+        <footer class="footer">
+            <a href="#" class="footer__link">previous</a>
+            <a href="#" class="footer__link">next</a>
+        </footer>
+    </div>
+    <div class="modal__overlay">
+        <div class="modal">
+            <div class="modal__content">
+                <h2 class="title">Add/Edit article</h2>
+                <div class="inputs__container">
+                    <input type="text" class="input" placeholder="Please enter title">
+                    <input type="text" class="input" placeholder="Please enter tag">
+                    <input type="text" class="input" placeholder="Please enter author">
+                    <input type="text" class="input" placeholder="Please enter date">
+                    <input type="text" class="input" placeholder="Please enter image url">
+                </div>
+                <textarea class="textarea" name="content" cols="28" rows="7" placeholder="Please enter content"></textarea>
+                <div class="modal__buttons">
+                    <button type="button" class="button">Cancel</button>
+                    <button type="button" class="button button--pink">Save</button>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+</body>
+<script src="./scripts/script.js"></script>
+<script src="./mussum-ipsum/dist/mipsum.min.js"></script>
+
 
 </html>
